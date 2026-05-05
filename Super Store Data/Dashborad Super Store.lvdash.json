@@ -1,0 +1,285 @@
+{
+  "datasets": [
+    {
+      "name": "fce3b298",
+      "displayName": "monthly_sales",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.gold.monthly_sales",
+        "dimensions": [
+          {
+            "name": "year",
+            "expr": "source.year",
+            "displayName": "Year"
+          },
+          {
+            "name": "month",
+            "expr": "source.month",
+            "displayName": "Month"
+          },
+          {
+            "name": "total_sales",
+            "expr": "source.total_sales",
+            "displayName": "Total Sales"
+          }
+        ]
+      }
+    },
+    {
+      "name": "2291c483",
+      "displayName": "sales_by_category",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.gold.sales_by_category",
+        "dimensions": [
+          {
+            "name": "Category",
+            "expr": "source.Category",
+            "displayName": "Category"
+          },
+          {
+            "name": "total_sales",
+            "expr": "source.total_sales",
+            "displayName": "Total Sales"
+          },
+          {
+            "name": "total_profit",
+            "expr": "source.total_profit",
+            "displayName": "Total Profit"
+          }
+        ]
+      }
+    },
+    {
+      "name": "9800d31a",
+      "displayName": "superstore_sales_by_ship_mode",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.gold.superstore_sales_by_ship_mode",
+        "dimensions": [
+          {
+            "name": "Ship_Mode",
+            "expr": "source.Ship_Mode",
+            "displayName": "Ship Mode"
+          },
+          {
+            "name": "Total_Sales",
+            "expr": "source.Total_Sales",
+            "displayName": "Total Sales"
+          },
+          {
+            "name": "Total_Profit",
+            "expr": "source.Total_Profit",
+            "displayName": "Total Profit"
+          },
+          {
+            "name": "Total_Orders",
+            "expr": "source.Total_Orders",
+            "displayName": "Total Orders"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "58cfea84",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "cd14dceb",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "fce3b298",
+                  "fields": [
+                    {
+                      "name": "year",
+                      "expression": "`year`"
+                    },
+                    {
+                      "name": "month",
+                      "expression": "`month`"
+                    },
+                    {
+                      "name": "sum(total_sales)",
+                      "expression": "SUM(`total_sales`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Monthly Total Sales Trend",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "month",
+                  "displayName": "Month",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_sales)",
+                  "displayName": "Total Sales",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "year",
+                  "displayName": "Year",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "sa",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2291c483",
+                  "fields": [
+                    {
+                      "name": "Category",
+                      "expression": "`Category`"
+                    },
+                    {
+                      "name": "sum(total_profit)",
+                      "expression": "SUM(`total_profit`)"
+                    },
+                    {
+                      "name": "sum(total_sales)",
+                      "expression": "SUM(`total_sales`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 1
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "showDescription": false,
+                "title": "Total Sales Profit By Category"
+              },
+              "widgetType": "combo",
+              "encodings": {
+                "x": {
+                  "fieldName": "Category",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                },
+                "y": {
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "sum(total_profit)"
+                      }
+                    ]
+                  },
+                  "secondary": {
+                    "fields": [
+                      {
+                        "fieldName": "sum(total_sales)"
+                      }
+                    ]
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
