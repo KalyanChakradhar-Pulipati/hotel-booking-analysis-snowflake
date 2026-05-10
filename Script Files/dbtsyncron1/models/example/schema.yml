@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw_sync_data
+    database: syncron
+    schema: raw_sync_data
+    tables:
+      - name: financial_data
