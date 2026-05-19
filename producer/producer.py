@@ -3,7 +3,7 @@ import json
 import requests
 from kafka import KafkaProducer
 
-Api_key="d80d3hpr01qq9ln3ect0d80d3hpr01qq9ln3ectg"
+Api_key="<<YOUR API KEY>>"
 Base_url="https://finnhub.io/api/v1/quote"
 symbols=["AAPL","GOOGL","MSFT","AMZN","TSLA"]
 
